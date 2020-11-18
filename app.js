@@ -2,32 +2,26 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const connectDB = require('./config/db')
-const { request } = require('express')
-const http = require('http')
-const fs = require('fs')
 
+const app = express()
 
 // Load config
 dotenv.config({ path: './config/config.env'})
 
-connectDB()
+// Import routes
+app.use('/notes', require('./routes/notes'))
 
-const app = express()
+// Routes
+app.get('/', (req, res) => {
+  res.send('login page')
+})
 
 // Logging
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
 
-// Read html file
-app.use(express.static( __dirname + '/view' ));
-
-// Routes
-app.use('/', require('./routes/index'))
-
+connectDB()
 
 const PORT = process.env.PORT || 3000
-
-app.listen(
-  PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+app.listen(PORT)
