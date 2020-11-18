@@ -2,11 +2,15 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const connectDB = require('./config/db')
+const bodyParser = require('body-parser')
 
 const app = express()
 
 // Load config
 dotenv.config({ path: './config/config.env'})
+
+// Apply body parser
+app.use(bodyParser.json())
 
 // Import routes
 app.use('/notes', require('./routes/notes'))
