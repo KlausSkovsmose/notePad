@@ -11,7 +11,7 @@ dotenv.config({ path: './config/config.env'})
 // Import routes
 app.use('/notes', require('./routes/notes'))
 
-// Routes
+// Routes landing page
 app.get('/', (req, res) => {
   res.send('login page')
 })
