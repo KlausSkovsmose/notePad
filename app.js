@@ -20,6 +20,11 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 // Read html file
+app.use(express.static( __dirname + '/view' ));
+
+// Routes
+app.use('/', require('./routes/index'))
+
 
 const PORT = process.env.PORT || 3000
 
