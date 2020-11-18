@@ -3,13 +3,14 @@ const dotenv = require('dotenv')
 const morgan = require('morgan')
 const connectDB = require('./config/db')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const app = express()
 
 // Load config
 dotenv.config({ path: './config/config.env'})
 
-// Apply body parser
+// Apply body
 app.use(bodyParser.json())
 
 // Import routes
@@ -25,6 +26,7 @@ if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
 
+// Connect db
 connectDB()
 
 const PORT = process.env.PORT || 3000
