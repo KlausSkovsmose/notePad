@@ -14,7 +14,11 @@ dotenv.config({ path: './config/config.env'})
 app.use(bodyParser.json())
 
 // Import routes
+const authRoute = require('./routes/auth')
 app.use('/notes', require('./routes/notes'))
+
+//Route middleware
+app.use('/api/user', authRoute)
 
 // Routes landing page
 app.get('/', (req, res) => {
