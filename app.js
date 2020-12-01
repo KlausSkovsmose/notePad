@@ -12,6 +12,7 @@ dotenv.config({ path: './config/config.env'})
 
 // Apply body
 app.use(bodyParser.json())
+app.use(express.json())
 
 // Import routes
 const authRoute = require('./routes/auth')
