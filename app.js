@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const connectDB = require('./config/db')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const notesRoute = require('./routes/notes')
 
 const app = express()
 
@@ -16,10 +17,10 @@ app.use(express.json())
 
 // Import routes
 const authRoute = require('./routes/auth')
-app.use('/notes', require('./routes/notes'))
 
 //Route middleware
 app.use('/api/user', authRoute)
+app.use('/api/notes', notesRoute)
 
 // Routes landing page
 app.get('/', (req, res) => {
