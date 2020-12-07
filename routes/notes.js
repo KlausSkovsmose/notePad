@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Note = require("../models/Note");
 const User = require("../models/User");
-const verify = require('./verifyToken')
+const verify = require("./verifyToken");
 
 // Gets a specific note
 router.get("/:noteId", verify, async (req, res) => {
@@ -26,16 +26,15 @@ router.get("/", verify, async (req, res) => {
 
 // Create a note
 router.post("/", verify, async (req, res) => {
-  const note = new Note({
+  const newNote = new Note({
     title: req.body.title,
     description: req.body.description,
+    creatorId: req.user._id,
   });
-  try {
-    const savedNoteToUser = await note.save();
-    res.json(savedNoteToUser);
-  } catch (err) {
-    res.json({ message: err });
-  }
+  newNote
+    .save()
+    .then((note) => res.json(note))
+    .catch((err) => console.log(err));
 });
 
 // Delete a specific note
@@ -55,7 +54,7 @@ router.patch("/:noteId", verify, async (req, res) => {
       { _id: req.params.noteId },
       { $set: { title: req.body.title } }
     );
-    res.json(updatedNote)
+    res.json(updatedNote);
   } catch (err) {}
 });
 

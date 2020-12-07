@@ -19,10 +19,6 @@ const UserSchema = new Schema({
         max: 1024,
         min: 6,
     },
-    notes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Notes'
-    }]
 })
 
 module.exports = User = mongoose.model('user', UserSchema)
