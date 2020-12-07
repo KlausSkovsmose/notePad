@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Note = require("../models/Note");
+const User = require("../models/User");
 const verify = require('./verifyToken')
 
 // Gets a specific note
@@ -23,16 +24,15 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
-// Submits a note
+// Create a note
 router.post("/", verify, async (req, res) => {
   const note = new Note({
     title: req.body.title,
     description: req.body.description,
   });
-
   try {
-    const savedNote = await note.save();
-    res.json(savedNote);
+    const savedNoteToUser = await note.save();
+    res.json(savedNoteToUser);
   } catch (err) {
     res.json({ message: err });
   }
