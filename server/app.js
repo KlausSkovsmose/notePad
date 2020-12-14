@@ -5,6 +5,7 @@ const connectDB = require('./config/db')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const notesRoute = require('./routes/notes')
+const cors = require('cors')
 
 const app = express()
 
@@ -14,6 +15,7 @@ dotenv.config({ path: './config/config.env'})
 // Apply body
 app.use(bodyParser.json())
 app.use(express.json())
+app.use(cors())
 
 // Import routes
 const authRoute = require('./routes/auth')
