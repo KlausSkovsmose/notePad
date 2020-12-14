@@ -10,32 +10,25 @@
 </head>
 
 <body>
-    <div class="login-box">
-        <h1>Login Page</h1>
-        <div class="textbox">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <input type="text" placeholder="Username" name="" value="">
+    <form method="POST" id="login">
+        <div class="login-box">
+            <h1>Login Page</h1>
+            <div class="textbox">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input type="text" placeholder="Email" name="email" required>
+            </div>
+    
+            <div class="textbox">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Password" name="password" required>
+            </div>
+    
+            <input class="signIn-btn" id="login-btn" type="submit" name="login-btn" value="Sign in">
+            <button class="UserCreate-btn" type="button">Create User</button>
         </div>
-
-        <div class="textbox">
-            <i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" placeholder="Password" name="" value="">
-        </div>
-
-        <input class="signIn-btn" id="login-btn" type="button" name="" value="Sign in">
-        <input class="UserCreate-btn" id="createuser-btn" type="button" name="" value="Create user">
-    </div>
+    </form>
+    
+    <script src="../app.js"></script>
 
 </body>
-
-<script type="text/javascript">
-    document.getElementById("login-btn").onclick = function() {
-        location.href = "pages/notepad.html";
-    }
-
-    document.getElementById("createuser-btn").onclick = function() {
-        location.href = "createUser.html";
-    }
-</script>
-
 </html>
