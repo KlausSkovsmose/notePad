@@ -17,7 +17,9 @@ router.get("/:noteId", verify, async (req, res) => {
 // Gets back all notes
 router.get("/", verify, async (req, res) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find({
+      creatorId: req.user._id,
+    });
     res.json(notes);
   } catch (err) {
     res.json({ message: err });
@@ -52,10 +54,12 @@ router.patch("/:noteId", verify, async (req, res) => {
   try {
     const updatedNote = await Note.updateOne(
       { _id: req.params.noteId },
-      { $set: { title: req.body.title } }
+      { $set: { title: req.body.title, description: req.body.description } }
     );
     res.json(updatedNote);
-  } catch (err) {}
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
 
 module.exports = router;
