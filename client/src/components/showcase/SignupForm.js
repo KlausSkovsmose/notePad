@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./SignupForm.css";
 import axios from "axios";
+import { useUser } from "../../context/user.context";
 
 const SignupForm = () => {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const { setUserData } = useUser();
 
   const handleChange = (e) => {
     setUser((curUser) => {
@@ -17,7 +19,8 @@ const SignupForm = () => {
     try {
       const { data } = await axios.post("http://localhost:5000/register", user);
 
-      console.log(data);
+      setUserData(data);
+      localStorage.setItem("user", JSON.stringify(data));
     } catch (error) {
       console.log(error.response.data);
     }

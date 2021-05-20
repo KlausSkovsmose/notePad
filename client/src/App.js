@@ -1,12 +1,15 @@
 import "./App.css";
 import Navbar from "./components/navbar";
 import Showcase from "./components/showcase";
+import { UserProvider } from "./context/user.context";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Showcase />
+      <UserProvider>
+        <Navbar />
+        <Showcase />
+      </UserProvider>
     </div>
   );
 }
