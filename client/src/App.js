@@ -3,6 +3,7 @@ import Navbar from "./components/navbar";
 import Showcase from "./components/showcase";
 import { UserProvider } from "./context/user.context";
 import { Switch, Route } from "react-router";
+import Dashboard from "./components/dashboard";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Showcase />
           </Route>
           <Route exact path="/dashboard">
-            <h1>This is the dashboard</h1>
+            <Dashboard />
           </Route>
         </Switch>
       </UserProvider>

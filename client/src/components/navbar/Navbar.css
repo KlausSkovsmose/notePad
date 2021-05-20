@@ -48,6 +48,16 @@
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+span {
+  font-weight: bolder;
+  font-size: larger;
+}
+
 .nav-links ul li {
   margin: 0 1.5rem;
 }
@@ -70,5 +80,21 @@
 .login-btn:hover {
   cursor: pointer;
   background: #155ecc;
+  border: 0.2px solid white;
+}
+
+.signout-btn {
+  width: 8rem;
+  height: 2rem;
+  background: #a10000;
+  color: white;
+  border-radius: 87px;
+  border: 0 solid transparent;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.24);
+}
+
+.signout-btn:hover {
+  cursor: pointer;
+  background: #c00000;
   border: 0.2px solid white;
 }

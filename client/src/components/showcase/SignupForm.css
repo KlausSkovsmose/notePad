@@ -42,3 +42,7 @@
   background: #155ecc;
   border: 0.2px solid white;
 }
+
+.hide {
+  display: none;
+}

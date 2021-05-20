@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./SignupForm.css";
 import axios from "axios";
 import { useUser } from "../../context/user.context";
+import { useHistory } from "react-router";
 
 const SignupForm = () => {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
-  const { setUserData } = useUser();
+  const { userData, setUserData } = useUser();
+  let history = useHistory();
 
   const handleChange = (e) => {
     setUser((curUser) => {
@@ -21,13 +23,14 @@ const SignupForm = () => {
 
       setUserData(data);
       localStorage.setItem("user", JSON.stringify(data));
+      history.push("/dashboard");
     } catch (error) {
       console.log(error.response.data);
     }
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className={!userData ? "form" : "hide"} onSubmit={handleSubmit}>
       SIGN UP
       <div className="input-group">
         <input
