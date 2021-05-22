@@ -1,0 +1,32 @@
+.noteBox {
+  width: 350px;
+  height: 190px;
+  background: #ffffff;
+  box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.noteBox h2 {
+  width: 60%;
+  font-size: 20px;
+}
+
+.noteDate {
+  color: #9b9b9b;
+  font-size: 12px;
+}
+
+.noteActions button {
+  box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.25);
+  float: right;
+  margin-top: -20px;
+  background: #e6e6e6;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  color: #9b9b9b;
+  margin-right: 10px;
+}

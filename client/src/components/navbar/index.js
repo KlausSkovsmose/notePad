@@ -30,11 +30,7 @@ const Navbar = () => {
         <div className="nav-links">
           <ul>
             <li>
-              <NavLink
-                exact
-                to="/"
-                activeStyle={{ color: "black", textDecoration: "underline" }}
-              >
+              <NavLink exact to="/" activeStyle={{ color: "black" }}>
                 Home
               </NavLink>
             </li>
@@ -42,23 +38,28 @@ const Navbar = () => {
             <li>Contact</li>
             {userData && (
               <li>
-                <NavLink
-                  exact
-                  to="/dashboard"
-                  activeStyle={{ color: "black", textDecoration: "underline" }}
-                >
-                  Hello <span>{userData.username}</span>! {"  "}
+                <NavLink exact to="/dashboard" activeStyle={{ color: "black" }}>
+                  Hello{" "}
+                  <span style={{ marginRight: 3 }}>{userData.username}</span>!
                 </NavLink>
               </li>
             )}
           </ul>
           {!userData && (
             <button onClick={handleShowModal} className="login-btn">
+              <i
+                className="far fa-user-circle fa-lg"
+                style={{ marginRight: 10 }}
+              ></i>{" "}
               Login
             </button>
           )}
           {userData && (
-            <button className="signout-btn" onClick={handleSignout}>
+            <button className="login-btn" onClick={handleSignout}>
+              <i
+                className="fas fa-sign-out-alt fa-lg"
+                style={{ marginRight: 10 }}
+              ></i>{" "}
               Sign out
             </button>
           )}

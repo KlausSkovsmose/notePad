@@ -4,6 +4,7 @@ import { useUser } from "../../context/user.context";
 import axios from "axios";
 import NotesList from "./NotesList";
 import AddNoteModal from "./AddNoteModal";
+import "./index.css";
 
 const Dashboard = () => {
   const { userData } = useUser();
@@ -45,8 +46,12 @@ const Dashboard = () => {
   if (!userData) return <Redirect to="/" />;
 
   return (
-    <div>
-      <button onClick={handleShowModal}>+</button>
+    <div className="container">
+      <div style={{ float: "right" }}>
+        <button className="addNewNoteBtn" onClick={handleShowModal}>
+          +
+        </button>
+      </div>
       <NotesList notes={notes} />
       <AddNoteModal
         show={showModal}
