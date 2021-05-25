@@ -1,14 +1,16 @@
-FROM node:14.17-slim
+FROM node:14-alpine3.10
 
-WORKDIR /usr/src/app
+LABEL version="1.0"
+LABEL description="Development image for the Notepad MERN API"
 
-COPY ./package.json ./
-COPY ./package-lock.json ./
+WORKDIR /app
 
-RUN npm install
+COPY ["package.json","package-lock.json*", "./"]
+
+RUN npm install && npm cache clean --force
 
 COPY . .
 
 EXPOSE 5000
 
-CMD ["npm","start"]
+CMD [ "npm", "start" ]
