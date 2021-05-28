@@ -19,13 +19,16 @@ const SignupForm = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:5000/register", user);
+      const { data } = await axios.post(
+        `http://` + window.location.hostname + `:5000/register`,
+        user
+      );
 
       setUserData(data);
       localStorage.setItem("user", JSON.stringify(data));
       history.push("/dashboard");
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     }
   };
 

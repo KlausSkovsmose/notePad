@@ -19,7 +19,9 @@ const Dashboard = () => {
 
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/${userData.username}/notes/`,
+        `http://` +
+          window.location.hostname +
+          `:5000/${userData.username}/notes/`,
         {
           token: userData.token,
           title: note.title,
@@ -37,7 +39,11 @@ const Dashboard = () => {
   useEffect(() => {
     if (userData) {
       axios
-        .get(`http://localhost:5000/${userData.username}/notes/`)
+        .get(
+          `http://` +
+            window.location.hostname +
+            `:5000/${userData.username}/notes/`
+        )
         .then((response) => setNotes(response.data))
         .catch((error) => console.log(error.response));
     }

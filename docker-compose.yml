@@ -8,8 +8,8 @@ services:
       dockerfile: Dockerfile
     container_name: notepad_server
     volumes:
-      - /app/node_modules
-      - ./server:/app
+      - ./server/:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 5000:5000
     depends_on:
@@ -58,8 +58,8 @@ services:
       dockerfile: Dockerfile
     container_name: notepad_react_frontend
     volumes:
-      - ./app/node_modules
-      - ./client:/app
+      - ./client/:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 3000:3000
     depends_on:

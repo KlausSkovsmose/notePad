@@ -19,7 +19,10 @@ const LoginModal = ({ show, close }) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:5000/login", user);
+      const { data } = await axios.post(
+        `http://` + window.location.hostname + `:5000/login`,
+        user
+      );
 
       setUserData(data);
       localStorage.setItem("user", JSON.stringify(data));
